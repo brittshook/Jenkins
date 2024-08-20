@@ -17,5 +17,11 @@ pipeline {
                 sh 'aws s3 sync frontend/dist s3://bshook-bucket'
             }
         }
+
+        stage('Build Backend') {
+            steps {
+                sh 'cd demo && mvn clean install'
+            }
+        }
     }
 }
