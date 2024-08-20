@@ -8,13 +8,19 @@ pipeline {
             }
         }
 
-         stage('Test') {
+        stage('Test') {
             steps {
                 sh 'echo Testing'
             }
         }
 
-         stage('Deploy') {
+        stage('TestGitWebhook') {
+            steps {
+                sh 'echo Git Webhook works'
+            }
+        }
+
+        stage('Deploy') {
             steps {
                 sh 'echo Deploying'
             }
