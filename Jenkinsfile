@@ -9,21 +9,12 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Deploy Frontend') {
             steps {
-                sh 'echo Testing'
-            }
-        }
-
-        stage('TestGitWebhook') {
-            steps {
-                sh 'echo Git Webhook works'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh 'echo Deploying'
+                script {
+                    withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS')
+                }
+                sh 'aws s3 sync frontend/dist s3://bshook-bucket'
             }
         }
     }
