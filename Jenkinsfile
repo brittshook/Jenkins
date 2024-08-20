@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build Frontend') {
             steps {
-                sh 'echo Building'
+                sh 'echo building frontend'
+                sh 'cd frontend && npm i && npm run build'
             }
         }
 
